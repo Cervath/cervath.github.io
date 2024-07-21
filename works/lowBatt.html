@@ -32,6 +32,13 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+    .thick-line {
+        border: 0;
+        height: 2px; /* Cambia este valor para ajustar el grosor */
+        background-color: black; /* Cambia el color si es necesario */
+    }
+</style>
 </head>
 
 <body>
@@ -160,17 +167,18 @@
                             </video>
                             <p><b>Mine</b></p>
                           </div>
-
+                          
                           <div class="col-md-3">
                             <video autoplay loop muted playsinline class="img-fluid">
                               <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
                             </video>
                             <p><b>Atomic Explosion</b></p>
                           </div>
-
+                          
                         </div> <!-- End Video Row-->
-
+                        
                         <!-- Basic Shoots-->
+                        <hr>
                         <h5>Basic Shoot</h5> 
                         <p align = "justify">
                           Since it's just a single gun, it manages a pool of bullets that are generated at the start, and all possible systems they might have,
@@ -179,7 +187,7 @@
                           or after a certain number of seconds, it returns to the pool, deactivating completely.
                         </p>
                       
-                        <div class="container">
+                      <div class="container">
                         <div class="row align-items-center">
                             <div class="col-md-3">
                                 <img src="../assets/img/Games/LowBatt/Header.png" alt="Image" class="img-fluid">
@@ -250,12 +258,15 @@
                     </div> <!-- End Video Row-->
                     <!-- End Basic Shoots-->
 
+                    <hr>
                     <!-- Explosive Things -->
                     <h5> Explosive Things</h5>
                     <p align = "justify">
                         Having two elements that caused radial damage, I decided to create a UActorComponent that would be URadialDamage. This component would handle
                          everything related to the damage to be applied to an area, and you would only need to pass the area of effect to it. Additionally, it would 
-                         also take care of the particles and the detection of other explosive elements to make them explode.
+                         also take care of the particles and the detection of other explosive elements to make them explode.I tried to use the radial damage feature 
+                         in Unreal from the FDamage class, but since it wasn't working as expected, I created a custom class to implement that damage.
+                         
 
                         <br><br>
                        When an element explodes, it will overlap with all the elements that have the explosive tag, and then categorize them by their collision channel.
@@ -269,7 +280,7 @@
                         only mines, and they will repeat the same procedure until none are left.
                     </p>
                     <!-- End Explosive Things -->
-                    
+                    <hr>
                     <!-- Mine -->
                     <h6> Mine</h6>
                     <p align = "justify">
@@ -283,7 +294,7 @@
                             <video autoplay loop muted playsinline class="img-fluid">
                               <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
                             </video>
-                            <p><b>Deply Mine</b></p>
+                            <p><b>Deploy Mine</b></p>
                           </div>
                           
                           <div class="col-md-3">
@@ -308,6 +319,7 @@
                           </div>
 
                          </div>
+                    <!-- End Video Row-->
                     <p align = "justify">
                       I had to create both the expanding circle and the blinking material myself. For the blinking light, it involved creating a material with a 
                       parameterizable timer. For the expanding circles, a Torus from Unreal was created, and all parts were removed to leave only the outer circle. 
@@ -316,10 +328,129 @@
                     <p align = "justify">
                       With those elements, it was only necessary to parameterize the mesh in the Niagara system and modify it through code.
                     </p>
-                </div>
+                    <!-- End mine-->
+                    <hr>
+                    <!-- Atomic Explosion-->
+                    <h6> Atomic Explosion</h6>
+                    <p align = "justify">
+                      The atomic explosion shares many similarities with a mine, but it differs in its activation method and response.
+
+                    </p>
+                    <p align = "justify">
+                      When the player kills an enemy, it drops an energy orb that moves toward the player. Once the ability bar is filled, the player can use the atomic 
+                      explosion. 
+                    </p>
+                      <p align = "justify">
+                      The player needs to hold down the ability button and surpass a yellow circle to detonate it. The explosion will continue to expand until
+                       it reaches a red circle, which is the maximum range. Once the player releases the button, the explosion occurs. However, if the yellow circle is 
+                       not surpassed, the explosion will be canceled.
+                      </p>
+                      <p align = "justify">
+                        The area of effect for this weapon is always visible. While with the mine we only see the activation radius, the nuclear explosion shows the 
+                        effect radius, which increases as the circle expands. If the mine explosion encounters obstacles like walls or boxes, it won't affect objects 
+                        behind them. However, the nuclear explosion can pass through elements marked as "cover".
+
+                      </p>
+                    <!-- Video Row-->
+                         <div class="row align-items-stretch justify-content-center" data-aos="fade-up">
+
+                          <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                            </video>
+                            <p><b>Getting energy</b></p>
+                          </div>
+
+                          <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                            </video>
+                            <p><b>Not energy</b></p>
+                          </div>
+
+                          <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                            </video>
+                            <p><b>Cancel explosion</b></p>
+                          </div>
+                          
+                          <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                            </video>
+                            <p><b>Charging ability</b></p>
+                          </div>
+
+                          <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                            </video>
+                            <p><b>Explosion</b></p>
+                          </div>
+
+                           <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                            </video>
+                            <p><b>Activate other explosive objects</b></p>
+                          </div>
+                          <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                            </video>
+                            <p><b>uncovered and Covered scenario</b></p>
+                          </div>
+
+                         </div>
+                    <!-- End Video Row-->
+                      <!-- End Atomic Explosion-->
+                      <hr class="thick-line">
+                       <!-- Laser-->
+                        <h4>Laser</h4>
+                     <div class="row align-items-stretch" data-aos="fade-up">
+                       
+                        <div class="col-md-5 d-flex align-items-center">
+                            <p align = "justify">
+                              The laser is a trap that forces the player to move more carefully through the environment, having to evade it to avoid taking damage.
+                              <br><br>
+                              When the player collides with the laser, they take a certain amount of damage and are pushed in the opposite direction.
+                              <br><br>
+                              This trap will only affect the player; no enemies will be affected by the laser.
+                            </p>
+                        </div>
+                        <div class="col-md-7">
+                           <video autoplay loop muted playsinline class="img-fluid">
+                             <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                           </video>
+                       </div>
+                    </div>
+
+                     <!-- End Laser-->
+                       <hr class="thick-line">
+                      <!-- Interactables-->
+                      <h4>Interactables</h4>
+                      <p align = "justify">
+                         Different elements that will help or block our way. These actors are separated by two.<br><br>
+
+                        Hittables
+                        <ul style="margin-left: 20px; text-align: justify;">
+                            <li>Normal Buttons</li>
+                            <li>Rotating Buttons</li>
+                        </ul>
+                        Activables
+                        <ul style="margin-left: 20px; text-align: justify;">
+                            <li>Bridges</li>
+                            <li>Doors</li>
+                            <li>Elevators</li>
+                        </ul>
+                      </p>
+
+                      <!-- End Interactables-->
+                  </div>
                 <p align = "center" style="font-size: 24px; font-weight: bold;">
                             [WORKING]
-                        </p>
+                </p>
             </div>
         
     </section>
