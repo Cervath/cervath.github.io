@@ -431,7 +431,7 @@
                       <!-- Interactables-->
                       <h4>Interactables</h4>
                       <p align = "justify">
-                         Different elements that will help or block our way. These actors are separated by two.<br><br>
+                         Different elements that will help or block our way. These actors are separated by two UInterface.<br><br>
 
                         Hittables
                         <ul style="margin-left: 20px; text-align: justify;">
@@ -443,10 +443,189 @@
                             <li>Bridges</li>
                             <li>Doors</li>
                             <li>Elevators</li>
+                            <li>Traffic Lights</li>
                         </ul>
                       </p>
+                      <!-- Buttons-->
+                      <hr>
+                      <h5> Buttons</h5>
+                      
+                      <p align = "justify">
+                        Although there are two different buttons, they have the same functions: activating elements in the scene.
+                        <br><br>
+                        The class has a TArray with all the actors that need to be activated. Once we press the button, we check if this button is active. If it is,
+                         we iterate through the array to activate their respective systems.
+                       
+                        </p>
+                         <div class="row align-items-stretch" data-aos="fade-up">
+                       
+                        <div class="col-md-5 d-flex align-items-center">
+                            <p align = "justify">
+                              The button will be in standby mode until activated, with a flashing red light, and the same applies to the cable associated with the button.
+                              <br><br>
+                              The cable is a Spline that was already created in BP, so to reuse the existing work, I reparented it with a class I had created to 
+                              implement functionalities through code.
 
-                      <!-- End Interactables-->
+                              <br><br>
+                              In addition to the light change, the rotating buttons will receive an impulse to rotate their structure until all the force is lost.
+                            </p>
+                        </div>
+                        <div class="col-md-7">
+                           <video autoplay loop muted playsinline class="img-fluid">
+                             <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                           </video>
+                       </div>
+                    </div>
+                        
+                    <p align = "justify">
+                        <br><br>
+                        The buttons are parameterized to:
+                        <!-- Video Row-->
+                         <div class="row align-items-stretch justify-content-center" data-aos="fade-up">
+
+                          <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                            </video>
+                            <p><b>Activate once</b></p>
+                          </div>
+
+                          <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                            </video>
+                            <p><b>Activate as many times as you want</b></p>
+                          </div>
+
+                          <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                            </video>
+                            <p><b>Activate other activable elements</b></p>
+                          </div>
+                          
+                          <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                            </video>
+                            <p><b>Activate other buttons</b></p>
+                          </div>
+
+                         </div>
+                    <!-- End Video Row-->
+                         <!-- End Buttons-->
+                      </p>
+                      <!-- Movable Platfomrs-->
+                      <hr>
+                      <h5> Movable Platforms</h5>
+                      
+                      <p align = "justify">
+                        I needed to create an actor that could move around the scene but could take many forms, so I created the Movable Platform class to unify all its 
+                        forms into a generic one, as the functionality would be the same: moving from point A to point B.
+                      </p>
+                      <p align = "justify">
+                          The actor has a TArray with all the possible locations it needs to go to, although in Low Batt, only two are used. When activated, a movement 
+                          is generated between its current point and the next point in the list. When there are no more points in the list, it loops back to the 
+                          beginning. To add these points, I use empty actors that can be generated through an editor tool I created.
+                      </p>
+                      <div class="row align-items-stretch" data-aos="fade-up">
+                       
+                        <div class="col-md-5 d-flex align-items-center">
+                            <p align = "justify">
+                                 The movement is made possible by a library from <a href="https://github.com/jdcook/fresh_cooked_tweens" target="_blank">Tween</a>. 
+                                 Using a reference graph, we can choose how we want the movement to be executed, adding specific animations to the different platforms.
+                               <br><br>
+                               The mathematical formula is also provided, allowing us to understand how it works and replicate it outside the library.
+                               <br><br>
+                               To add a bit more feedback, when the platform reaches its destination, sparks are emitted, simulating a collision.
+                        </div>
+                        <div class="col-md-7">
+                           <video autoplay loop muted playsinline class="img-fluid">
+                             <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                           </video>
+                           <br><br>
+                       </div>
+                       <br><br>
+                       <p align = "center">
+
+                        Let's see how these platforms look in motion:
+                        </p>
+                        <!-- Video Row-->
+                         <div class="row align-items-stretch justify-content-center" data-aos="fade-up">
+
+                          <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                            </video>
+                            <p><b>Door</b></p>
+                          </div>
+
+                          <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                            </video>
+                            <p><b>Bridge</b></p>
+                          </div>
+
+                          <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                            </video>
+                            <p><b>Elevator</b></p>
+                          </div>
+                          
+
+                         </div>
+                    <!-- End Video Row-->
+                     <!-- End Movable Platforms-->
+
+                     <!-- Door Frame-->
+                       <hr>
+                      <h5>Door Frames </h5>
+                      <p align = "justify">
+                        As I didn't know what type of entities the movable platforms would be at the time, and since it was a generic form, they weren't designed to be
+                         attached to another element. Even so, I tried to put the platform within the door frame class, but some things didn't work out, so I decided to 
+                         keep it separate.
+                      </p>
+
+                      <div class="col-md-5 d-flex align-items-center">
+                            <p align = "justify">
+                              The door frames have only two states: closed and open. To differentiate between these two states, the frames have both an emissive light 
+                              and a spotlight pointing towards the ground. And as with all the elements I've created, these colors are customizable in the BP.
+                            </p>
+                        </div>
+                        <div class="col-md-7">
+                           <video autoplay loop muted playsinline class="img-fluid">
+                             <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                           </video>
+                           <br><br>
+                       </div>
+
+                      <!-- End Door Frame-->
+
+                       <!-- Traffic Lights-->
+                      <hr>
+                      <h5>Traffic Lights </h5>
+                      <p align = "justify">
+                        At certain times, we will need to activate more than one button to open a door. For this, we will have a traffic light as visual support, 
+                        indicating how many remaining buttons need to be activated.
+                      </p>
+                      <div class="col-md-5 d-flex align-items-center">
+                            <p align = "justify">
+                             The traffic light is just another activatable element, but to activate the final element, it must validate all the lights. The traffic light
+                              is designed to have as many lights as you want, and the lights will turn on in order as you activate them. Once you activate the last light,
+                               you will activate the desired platform.
+                            </p>
+                        </div>
+                        <div class="col-md-7">
+                           <video autoplay loop muted playsinline class="img-fluid">
+                             <source src="https://i.imgur.com/7ACYrtR.mp4" type="video/mp4">
+                           </video>
+                           <br><br>
+                       </div>
+                      <!-- End Traffic Lights-->
+                    </div>
+
                   </div>
                 <p align = "center" style="font-size: 24px; font-weight: bold;">
                             [WORKING]
