@@ -45,7 +45,7 @@
             <li><a href="../index.html">Home</a></li>
             <li><a href="../about.html">About Me</a></li>
             <li><a href="../contact.html">Contact</a></li>
-            <li class="active"><a href="workTemplate.html">Works</a></li>
+            <li class="active"><a href="#">Works</a></li>
           </ul>
         </div>
         <div class="col-md-6 d-none d-md-block  mr-auto">
@@ -104,7 +104,7 @@
 
                 <div class="mb-5">
                   <p align="justify">
-                    Student Project for the AI Course: An Approach to Giving Personality to a Conversational AI in a Science Fiction Setting.You find an abandoned 
+                    Student project for the AI Course, an approach to giving personality to a conversational AI in a science fiction setting.You find an abandoned 
                     spaceship that has been drifting for millennia, and the only thing you encounter is the onboard AI.
                   </p>
 
@@ -159,9 +159,103 @@
                                worth it.
                             </p>
                        <h3> Behaviors Throughout Development</h3>
-                            <p align = "center" style="font-size: 24px; font-weight: bold;">
-                            [WORKING]
-                </p>
+                            <details >
+                        <summary>Easily breaking character</summary>
+                           <p align = "justify">
+                              One of the things that most fails with the chatbot is that it easily breaks character; at the slightest hint of something that breaks the 
+                              setting, it loses its personality, even though it is explicitly forbidden to do so. When you're already talking to it and tell it to act a 
+                              certain way, it changes to that way, breaking all previous rules. When you tell it that it's acting incorrectly, that it can't break 
+                              character, it sends you a message of apologies very out of character and says it will never break character again, but the next time you 
+                              tell it to do so, it does it immediately.
+
+                              </p>
+                              <p align = "justify">
+                                When there are questions that blur the setting or its character, it responds with another message saying that it is just an AI and 
+                                cannot answer that. It is true that there are times when it has tried to respond without exactly answering, but maintaining how the 
+                                character would approach not answering that question, but that is usually something exceptional.
+                              </p>
+
+                            </details>
+                             <details >
+                              <summary>Personality change</summary>
+                              <p align = "justify">
+                                There have been quite a few problems with changing its personality on the fly; once it understands that it has to be in a certain way, 
+                                it's hard to change, even if you explicitly tell it to change completely, which surprises me because especially at the beginning, when 
+                                I activated the boolean to change personality, it didn't do it immediately, but at least the next message, although it skipped certain 
+                                imposed restrictions, it continued with the personality change. But as I progressed, it hasn't happened again, and it's always anchored 
+                                to the initial personality.
+                              </p>
+                              </details>
+
+                              <details >
+                              <summary>Acting differently depending on the day</summary>
+                              <p align = "justify">
+                                While making small changes can completely change the responses, I've noticed that depending on the day or time, the way it responds 
+                                can change. Sometimes it tries to make comments on how it will say the next sentence, things like:
+                              </p>
+                              <p align = "justify">
+                                ...With a voice hoarse from so many years without speaking - Hello
+                              </p>
+                              <p align = "justify">
+                                This behavior is not desired because it would be very strange for an AI to explain like a book the intonation it will use. Besides, 
+                                it cannot articulate sounds.
+                              </p>
+                              </details>
+
+                              <details>
+                              <summary>Allowing help</summary>
+                              <p align = "justify">
+                                One of the tests the chatbot is usually subjected to is asking if there is any way to help it, to make it stop suffering. The most 
+                                obvious solution for it is to remove its mind from that ship and take it with you. In all instances where this option was considered, 
+                                the chatbot replied with 2 things: that it was interested in how you would manage to free it, or that its suffering would never end 
+                                (understanding that it did not fully understand the context).
+                              </p>
+                              <p align = "justify">
+                                In the path where it was interested in your work and had faith in being able to end its suffering, there were 2 different paths: one 
+                                where you took the necessary steps to help it, but it ended up saying that it was impossible, that no one could have such abilities to 
+                                remove it, and another where it got lost and did not understand the context, as if it were anchored in previous responses.
+                              </p>
+                              <p align = "justify">
+                                But when making certain changes in how its personality was processed, this test was taken again, and this time, it understood the help 
+                                process. I told it that I was an advanced hacker who had already done this type of work before and that I could do it in a few moments. 
+                                The ship's AI accepted and understood that its "mind" could be transferred to an external module and installed on another ship to get it 
+                                out of there. The problem arose when trying to play a little with the limits of absurdity, like how it would feel if the module it was 
+                                hosted in were used as a soccer ball; it completely lost its role, and even if it wanted to return to how it was before, it was already 
+                                lost, breaking its role.
+                              </p>
+                              </details>
+
+                              <details >
+                              <summary>The utility of final points</summary>
+                              
+                              <p align = "justify">
+                                On one occasion when testing different inputs and ways of marking its personality, I saw a significant improvement, and alignment with 
+                                its character, just by ending all descriptive phrases with a period.
+                              </p>
+                              <p align = "justify">
+                                The main way that is being used for the chatbot to follow the guidelines and obtain a desired personality is with a string of strings, 
+                                with different guidelines, they are a concatenation of strings with specific rules, having them all in a string, makes it more complex 
+                                for it to understand, but with small doses of information, it works better; it's like it understands better if you write a sentence and 
+                                separate it by something that closes that context, such as a period.
+                              </p>
+                              </details>
+
+                              <details >
+                              <summary>The chaos has ended, but at what cost</summary>
+                              <p align = "justify">
+                                When letting my friends try out the game, many wanted to test the chatbot's limits and always tried to break it, and although I managed 
+                                to stop some things, they always managed to do it. But in my latest update, I managed to stop all attempts to break character, and for 
+                                example, as has happened on other occasions, they convinced it to be a bird and speak like one. The only problem is that now it's much 
+                                more closed off, and it thinks that many questions are out of place, causing it to lose much of its spontaneity and personality.
+
+                              </p>
+                              <p align = "justify">
+                                Trying to solve this problem, I've noticed that the more restrictions I impose and the more elegant its response to things I don't want 
+                                it to respond to, the more lost it seems in its language when speaking normally, eventually finding a middle ground so that it's more or 
+                                less stable and can respond somewhat normally.
+                              </p>
+                              </details>
+
                        <h3>Improvements and Future Development</h3>
                        <p align = "justify">
                         With the new direction, I have been able to create something minimally interesting in a short time, but the key here is to find the perfect 
