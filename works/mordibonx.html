@@ -125,10 +125,177 @@
         <br>
         <div class="site-section pb-0">
                 <div class="container">
-                    
-                 <p align = "center" style="font-size: 24px; font-weight: bold;">
-                            [WORKING]
+                    <h3> Engine Info</h3>
+                 <p align = "justify">
+                  Although we had already worked on implementing things in a graphics engine, this is the first real contact creating everything from scratch with the 
+                  help of OpenGL. Throughout the development, many aspects have been reconsidered from how they were initially, restructuring different parts of the 
+                  engine for better functionality and making it more user-friendly for those working on it. Let's take a closer look at some of them.
+                  
                 </p>
+                <h4>ECS</h4>
+                <p align = "justify">
+                  The ComponentManager class is responsible for managing entity components in an Entity-Component-System (ECS) architecture. It provides functionality 
+                  to add, retrieve, and manipulate various components associated with entities. Additionally, it handles entity creation, deletion, and tracking of free 
+                  entity positions for efficient memory management.
+                </p>
+                <p align = "justify">
+                  The primary responsibilities of the ComponentManager include component management, entity creation and deletion, component retrieval, dynamic component
+                   addition, and entity tracking. It manages various components such as transforms, shaders, models, and lights used by entities in the scene. The class 
+                   handles the creation and deletion of entities, ensuring proper initialization and cleanup of associated components. It offers methods to retrieve and 
+                   access components associated with entities and dynamically adds new component types to the ECS architecture at runtime. Moreover, it tracks the 
+                   number of entities and maintains a list of free entity positions for efficient memory allocation.
+                </p>
+                <h4>Assets</h4>
+                <p align = "justify"> In this graphics engine, asset management is handled through various specialized classes, each focusing on different aspects of loading and rendering.</p>
+                
+                <p align = "justify">
+                  The Model class manages and renders 3D models. It uses the Assimp library for importing model data and OpenGL for rendering. The class is responsible for loading 
+                  textures and drawing meshes that make up the model. It efficiently checks if textures are already loaded and reuses them, or loads new ones as necessary.
+                </p>
+
+                <p align = "justify">
+                  The Mesh class focuses on managing and rendering 3D meshes. It loads vertex data and indices that define the mesh's geometry and uses OpenGL for 
+                  rendering. The class initializes OpenGL buffers and configures vertex attribute pointers for rendering.
+                </p>
+
+                <p align = "justify">
+                  The Renderer class handles rendering objects in the graphical environment. It manages the associations between models, shaders, and transformations required for 
+                  rendering. The class ensures objects are properly rendered using specified models and shaders, managing transformations like translation, rotation, 
+                  and scaling.
+                </p>
+
+                <p align = "justify">
+                  The Resource Manager class is responsible for loading and managing resources, particularly 3D models. It uses the Assimp library to import model data and construct 
+                  Mesh objects. 
+                  It can also load textures associated with models.
+                </p>
+
+                <p align = "justify">
+                  The Shader class encapsulates the functionality to load, compile, and manage vertex and fragment shaders in OpenGL. It provides methods to set uniform 
+                  variables and activate the shader for rendering. The class handles shader compilation, linking, and error checking.
+                </p>
+
+                <p align = "justify">
+                  The Texture class manages the loading and management of textures. It loads texture images from file paths, uploads them to GPU memory, and tracks loaded 
+                  textures to avoid redundant loading. The class interfaces with OpenGL to generate, bind, and set parameters for texture objects.
+                </p>
+
+                <h4> Render, Lights & Shadows</h4>
+                <p align = "justify">
+                  In forward rendering, the process begins with a shadow rendering pass for each type of light: directional, point, and spot. This pass calculates the 
+                  light space matrix and stores depth information in a depth buffer using depth shaders. Directional and spot lights use orthographic and perspective 
+                  projections respectively, rendering the scene from the light's point of view to generate depth textures. Point lights utilize a cubemap shadow mapping 
+                  technique, generating six depth textures for each direction around the light.
+                </p>
+
+                <p align = "justify">
+                  After generating the shadow information, the main lighting pass proceeds, where the scene objects are rendered with appropriate lighting. The camera's 
+                  view and projection matrices are set up, and for each active light type (directional, spot, point), the scene objects are iterated over and light 
+                  contributions are applied. Directional light shadows are calculated using previously generated depth information, with parameters configured and 
+                  applied to the lighting shader. Spotlights follow a similar process with specific spotlight setup, and point lights use cubemap depth textures for 
+                  shadow calculations. The lighting pass is completed with a blending operation that sums up light contributions from all active sources. Finally, depth 
+                  information is transferred from the geometry buffer's depth buffer to the default depth buffer, which may be necessary for certain post-processing 
+                  techniques.
+                </p>
+
+                <p align = "justify">
+                  Deferred rendering begins by setting up the Geometry Buffer (GBuffer) to store scene geometry information. The GBuffer is bound, cleared, and the 
+                  projection and view matrices are set up. Scene objects are iterated over, transformations are applied, and they are rendered using a geometry shader 
+                  to populate the GBuffer. Next, shadow mapping is performed for each light type. Directional lights calculate the light space matrix and render the 
+                  scene from the light's perspective using an orthographic projection, storing the depth map in a depth buffer. Spotlights follow a similar process but 
+                  use a perspective projection. Point lights employ a cubemap shadow mapping technique to generate six depth maps for each direction around the light.
+                </p>
+
+                <p align = "justify">
+                  The lighting pass in deferred rendering uses the deferred shading technique to calculate the final scene lighting by accumulating contributions from 
+                  all active lights. Directional lights calculate lighting contributions using the depth buffer from the shadow pass, blending results additively. 
+                  Spotlights follow a similar approach, and point lights apply lighting calculations using cubemap depth textures, also blending results additively. 
+                  Finally, post-processing effects such as blur, pixelation, contrast adjustment, grayscale, and color inversion are applied based on the chosen type. 
+                  Each effect uses a corresponding shader, and the final result is rendered to the screen.
+                </p>
+              <div class="site-section pb-0">
+                <div class="container" data-aos="fade-up">
+                    <div class="row align-items-stretch">
+                        <div class="col-md-6">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                                <source src="https://imgur.com/gnNCfRm.mp4" type="video/mp4">
+                            </video>
+                            <!--<img src="img/ps4_showcase.gif" alt="Metro engine" class="img-fluid">-->
+                            <div style="align-content:center;">
+                                <p><b>Directional</b></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                                <source src="https://imgur.com/8fOrgu2.mp4" type="video/mp4">
+                            </video>
+                            <!--<img src="img/ps4_showcase.gif" alt="Metro engine" class="img-fluid">-->
+                            <div style="align-content:center;">
+                                <p><b>Spot</b></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                                <source src="https://imgur.com/60Xc8da.mp4" type="video/mp4">
+                            </video>
+                            <!--<img src="img/ps4_showcase.gif" alt="Metro engine" class="img-fluid">-->
+                            <div style="align-content:center;">
+                                <p><b>Point</b></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                                <source src="https://imgur.com/JkxK1wj.mp4" type="video/mp4">
+                            </video>
+                            <!--<img src="img/ps4_showcase.gif" alt="Metro engine" class="img-fluid">-->
+                            <div style="align-content:center;">
+                                <p><b>All</b></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <h4> Multi-Threading</h4>
+            <p align = "justify">
+              The Jobber class implements a job scheduling system designed to execute tasks concurrently using multiple worker threads. It efficiently manages a pool 
+              of worker threads that continuously pull tasks from a queue and execute them. The class includes methods to add tasks to the queue, block until all tasks 
+              are completed, and shut down the worker threads gracefully.
+            </p>
+
+             <p align = "justify">
+              In the constructor, the number of worker threads is set based on the hardware concurrency. Each worker thread continuously retrieves and 
+              executes tasks from the queue. The class uses synchronization primitives, such as mutexes and condition variables, to manage access to the job queue and 
+              ensure thread safety.
+            </p>
+
+             <p align = "justify">
+              The destructor, sets a stop flag to signal the worker threads to cease processing. It then notifies all threads to stop, waits for them 
+              to complete their current tasks, and joins them to ensure a clean shutdown.
+            </p>
+
+            <p align = "justify">
+              A specific use in the engine is when the photo mode is used, where we can save the taken images to the disk. This action slows down the engine's 
+              performance, so by calling the save to disk function through the multi-threading system, the engine's execution does not stop.
+            </p>
+            <h4>Photo Mode</h4>
+            <div class="row align-items-stretch" data-aos="fade-up">
+                       <div class="col-md-7">
+                           <video autoplay loop muted playsinline class="img-fluid">
+                             <source src="https://imgur.com/3Zjm9Rm.mp4" type="video/mp4">
+                           </video>
+                       </div>
+                        <div class="col-md-5 d-flex align-items-center">
+                            <p align = "justify">
+                             A photo mode has been implemented in the engine, allowing you to take screenshots within the engine, modify them with post-processing, and 
+                             save them to your disk. To avoid impacting the engine's performance when saving, this part is implemented to work with multithreading.
+                              <br><br>
+                              Since we already use a framebuffer for screen rendering, we can obtain a texture from that frame at any time. With that ID and the pixels, 
+                              we can save the image to the disk using the stb_image_write library.
+                            </p>
+                        </div>
+                        
+                    </div>
             </div>
         
     </section>
