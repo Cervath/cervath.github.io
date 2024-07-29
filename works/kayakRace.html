@@ -125,10 +125,213 @@
         <br>
         <div class="site-section pb-0">
                 <div class="container">
-                    
-                 <p align = "center" style="font-size: 24px; font-weight: bold;">
-                            [WORKING]
+                <h3> Game Idea</h3>
+                 <p align = "justify">
+                  For our Video Game Design course, we had to create a game using a simplified control scheme, and we chose to use only the controller's joysticks. We 
+                  experimented with drawings and tested the possible movements using the joysticks. Among all the ideas, one stood out as the most interesting and fun: 
+                  a cooperative game where each player controls a kayak paddle with one joystick, making coordination and communication essential to progress. It can 
+                  also be played solo, but the journey would be much easier. This game is still a prototype, so some functionalities might not have the visual feedback 
+                  you would expect. 
                 </p>
+                <h3>Movement</h3>
+                <p align = "justify">
+                  The movement of the kayak is simple. Each paddle is associated with its respective joystick. Making a circular motion with one joystick will propel 
+                  the kayak in the opposite direction of the rotation, just like in real life. To move forward faster, both players need to perform the movement 
+                  simultaneously to propel the kayak forward. The paddle changes color to indicate movement. To restart the level, both joysticks must be pressed and 
+                  held for a few seconds. All these actions are accompanied by different levels of vibration on the controller.
+                  <br>
+
+                  <!-- Video Row-->
+                         <div class="row align-items-stretch justify-content-center" data-aos="fade-up">
+
+                           <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://imgur.com/vx2hn6P.mp4" type="video/mp4">
+                            </video>
+                            <p><b>Move to left</b></p>
+                          </div>
+                          
+                          <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://imgur.com/f7UtVm7.mp4" type="video/mp4">
+                            </video>
+                            <p><b>Move to right</b></p>
+                          </div>
+                          
+                          <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://imgur.com/Yuaj0qp.mp4" type="video/mp4">
+                            </video>
+                            <p><b>Move forward</b></p>
+                          </div>
+
+                          <div class="col-md-3">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                              <source src="https://imgur.com/CUod1wi.mp4" type="video/mp4">
+                            </video>
+                            <p><b>Restart</b></p>
+                          </div>
+                          
+                        </div> <!-- End Video Row-->
+                </p>
+               <h3>Meta</h3>
+               <p align = "justify">
+               As it is a race, we need to reach the finish line. Each map will be a race against the clock, and passing through certain checkpoints will add 5 extra 
+               seconds to the timer. It's crucial to collect some of these checkpoints; otherwise, reaching the finish line will be impossible.
+               </p>
+
+               <!-- Video Row-->
+
+            <div class="site-section pb-0">
+                <div class="container" data-aos="fade-up">
+                    <div class="row align-items-stretch">
+                        <div class="col-md-6">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                                
+                                <source src="https://imgur.com/0VQKp24.mp4" type="video/mp4">
+                            </video>
+                            <!--<img src="img/ps4_showcase.gif" alt="Metro engine" class="img-fluid">-->
+                            <div style="align-content:center;">
+                                <p><b>Ready, Steady, Go!</b></p>
+                            </div>
+                        </div>
+                       <div class="col-md-6">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                                
+                                <source src="https://imgur.com/2aZ2mx7.mp4" type="video/mp4">
+                            </video>
+                            <!--<img src="img/ps4_showcase.gif" alt="Metro engine" class="img-fluid">-->
+                            <div style="align-content:center;">
+                                <p><b>Gain seconds</b></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                                
+                                <source src="https://imgur.com/RGO9xa5.mp4" type="video/mp4">
+                            </video>
+                            <!--<img src="img/ps4_showcase.gif" alt="Metro engine" class="img-fluid">-->
+                            <div style="align-content:center;">
+                                <p><b>Pass level</b></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                                
+                                <source src="https://imgur.com/HyQm436.mp4" type="video/mp4">
+                            </video>
+                            <!--<img src="img/ps4_showcase.gif" alt="Metro engine" class="img-fluid">-->
+                            <div style="align-content:center;">
+                                <p><b>Time Up</b></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+<!-- End Video Row-->
+                <h3>Obstacles</h3>
+                <p align = "justify">
+                  To add more interest to the race, aside from the walls covering the area, there will be rocks obstructing the path. We need to navigate around them 
+                  to avoid losing time. If we hit the rocks, the player will be pushed back, losing control temporarily. However, to prevent this from being too 
+                  frustrating and causing an immediate game loss, the paddles will turn purple at the moment of impact, indicating that the current movement won't 
+                  propel the kayak but will instead rotate it, allowing for better re-alignment to avoid another collision.
+                </p>
+
+            <div class="site-section pb-0">
+                <div class="container" data-aos="fade-up">
+                    <div class="row align-items-stretch">
+                        <div class="col-md-6">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                                
+                                <source src="https://imgur.com/QGPVO95.mp4" type="video/mp4">
+                            </video>
+                            <!--<img src="img/ps4_showcase.gif" alt="Metro engine" class="img-fluid">-->
+                            <div style="align-content:center;">
+                                <p><b>Rock</b></p>
+                            </div>
+                        </div>
+                       <div class="col-md-6">
+                            <video autoplay loop muted playsinline class="img-fluid">
+                                
+                                <source src="https://imgur.com/wNEzBKz.mp4" type="video/mp4">
+                            </video>
+                            <!--<img src="img/ps4_showcase.gif" alt="Metro engine" class="img-fluid">-->
+                            <div style="align-content:center;">
+                                <p><b>Realocate</b></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+<!-- End Video Row-->
+                            <br>
+                <h3> Menu Navigation</h3>
+                <div class="row align-items-stretch" data-aos="fade-up">
+                       <div class="col-md-7">
+                           <video autoplay loop muted playsinline class="img-fluid">
+                             <source src="https://imgur.com/a1sZvNy.mp4" type="video/mp4">
+                           </video>
+                            <br><br>
+
+                       </div>
+                        <div class="col-md-5 d-flex align-items-center">
+                            <p align = "justify">
+                              We wanted the menu to have more movement, so all menu elements have their own scene within the water channel, transitioning between them through camera movements.
+                              
+                            </p>
+                        </div>
+                        
+                        
+                    </div>
+                
+
+                <h3> Level Selector</h3>
+                    <div class="row align-items-stretch" data-aos="fade-up">
+                       
+                        <div class="col-md-5 d-flex align-items-center">
+                            <p align = "justify">
+                              For the level selector to have more information and interactivity, all maps have a preview when selected, giving a glimpse of the level.
+                              
+                            </p>
+                        </div>
+                        <div class="col-md-7">
+                           <video autoplay loop muted playsinline class="img-fluid">
+                             <source src="https://imgur.com/25whF59.mp4" type="video/mp4">
+                           </video>
+                            <br><br>
+
+                       </div>
+                        <br>
+                    </div>
+                <h3> Tutorial</h3>
+                    <div class="row align-items-stretch" data-aos="fade-up">
+                       <div class="col-md-7">
+                           <video autoplay loop muted playsinline class="img-fluid">
+                             <source src="https://imgur.com/9sFF9rO.mp4" type="video/mp4">
+                           </video>
+                            <br><br>
+
+                       </div>
+                        <div class="col-md-5 d-flex align-items-center">
+                            <p align = "justify">
+                              To ensure the tutorial closely mirrors the gameplay, we designed a small area within the menu's water channel, where signs similar 
+                              to those found in other levels teach the player how to play.
+                            <br><br>
+                              Here, you will learn all the things you can do with the joystick: moving, repositioning your kayak when you get hit, and restarting the level.
+                              
+                            </p>
+                        </div>
+                        
+                    </div>
+                    <h3> Future Development</h3>
+                    <p align = "justify">
+                      In the end, the kayak's movement felt good enough to be playable, but due to some issues that needed fixing, the movement wasn't completely 
+                      perfected. A lot of work was needed on feedback to make the gameplay feel right, and the total lack of sound was another area that required 
+                      attention. Although the idea was to push the class project forward and release it as a game, there was still a lot of work to be done to reach a 
+                      satisfactory level, and I couldn't dedicate that much time to it. However, throughout the development process, I was able to learn a lot.
+                    </p>
             </div>
         
     </section>
