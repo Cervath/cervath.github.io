@@ -124,9 +124,108 @@
         <div class="site-section pb-0">
                 <div class="container">
                     
-                 <p align = "center" style="font-size: 24px; font-weight: bold;">
-                            [WORKING]
+                 <h3>Game Info</h3>
+
+                 <p align = "justify">
+                  We had to create a game for class, and my two partners wanted to do some kind of simulation to develop their skills in the field of AI. So, they 
+                  proposed the idea of a natural environment simulator with animals. The idea was good, but I didn't feel like making a simulation, so I thought about 
+                  it for a while and came up with the idea of adding a photographic component to the game, allowing the player to express themselves through the camera.
+                 </p>
+                 
+                 <p align = "justify">
+                  The game ended up featuring deer and crows trying to survive in a natural environment, searching for food and water, with the player being able to 
+                  capture these moments through photography.
+
+                 </p>
+                 <h3> Camera</h3>
+
+                  <!-- Video Row-->
+
+            <div class="site-section pb-0">
+              <div class="container" data-aos="fade-up">
+                  <div class="row align-items-stretch">
+                      <div class="col-md-6">
+                          <video autoplay loop muted playsinline class="img-fluid">
+                              
+                              <source src="https://imgur.com/0VQKp2.mp4" type="video/mp4">
+                          </video>
+                          <!--<img src="img/ps4_showcase.gif" alt="Metro engine" class="img-fluid">-->
+                          <div style="align-content:center;">
+                              <p><b>Switch to Photo Mode</b></p>
+                          </div>
+                      </div>
+                     <div class="col-md-6">
+                          <video autoplay loop muted playsinline class="img-fluid">
+                              
+                              <source src="https://imgur.com/2aZ2mx.mp4" type="video/mp4">
+                          </video>
+                          <!--<img src="img/ps4_showcase.gif" alt="Metro engine" class="img-fluid">-->
+                          <div style="align-content:center;">
+                              <p><b>Take Picture</b></p>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <video autoplay loop muted playsinline class="img-fluid">
+                              
+                              <source src="https://imgur.com/RGO9xa.mp4" type="video/mp4">
+                          </video>
+                          <!--<img src="img/ps4_showcase.gif" alt="Metro engine" class="img-fluid">-->
+                          <div style="align-content:center;">
+                              <p><b>Gallery</b></p>
+                          </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <video autoplay loop muted playsinline class="img-fluid">
+                            
+                            <source src="https://imgur.com/RGO9xa.mp4" type="video/mp4">
+                        </video>
+                        <!--<img src="img/ps4_showcase.gif" alt="Metro engine" class="img-fluid">-->
+                        <div style="align-content:center;">
+                            <p><b>Save in Disk</b></p>
+                        </div>
+                    </div>
+                      
+
+                  </div>
+              </div>
+          </div>
+<!-- End Video Row-->
+                 <h3>Problems & Making a Tutorial</h3>
+                 
+                 <p align = "justify">
+                  Since I had never done it before, I didn't know where to start. So, the first thing I did was search the documentation and the internet on how to 
+                  capture the game screen and convert it to a texture to use it in the interface. None of the searches yielded results; there were approaches to what 
+                  I was looking for, but they were either outdated or insufficient, and all the relevant information was in Blueprints.
+                  
+                  <p align = "justify">
+                  Tired of not finding answers, I tried to translate what people were doing in Blueprints into code. Although the conversion isn't 100% accurate since 
+                  not everything that can be done in Blueprints can be done the same way in code, I managed to capture screenshots and save them as a texture, which I 
+                  then converted into a dynamic material to use with the UI widgets. With this, I was able to work on creating the widget and class that would handle 
+                  the camera, as well as the widget and class to manage the photo gallery.
                 </p>
+                  <p align = "justify">
+                    The part I couldn't do in code was saving images to disk, so I had to do that in Blueprints. Another thing I couldn't implement in the project was 
+                    post-processing effects. However, when I changed the image format so they could be saved to disk, I realized that was the issue. With the new format,
+                     I could apply post-processing effects, giving the player more freedom to express themselves. Unfortunately, since I discovered this so late, I 
+                     didn't have time to implement it correctly before the class deadline.
+                  </p>
+
+                 <h5> Making a Tutorial</h5>
+                 <p align = "justify">
+                  After spending a lot of time trying to implement the mechanic with almost no information on the subject, I decided to make a tutorial to explain to 
+                  other users interested in adding a photo mode to their game. The tutorial is very basic and includes things I don't do in my project, but it's 
+                  simplified as much as possible to make it easy to understand and test. Everything is hosted in a GitHub repo 
+                  <a href="https://github.com/Cervath/Unreal_Photo_Mode" target="_blank">[this]</a> with a readme explaining the process step
+                  by step, along with the entire project for you to try out.
+                 </p>
+                 <h3> Future Development</h3>
+
+                 <p> Now that I can save images in the game and on disk, and I know how to apply post-processing effects, I'd like to continue the development. 
+                  This time, I can focus more on enriching the player experience rather than just trying to implement the mechanic. However, to do this, I would like to 
+                  restructure the code with the new knowledge I have gained from developing UI for Unreal. I plan to revisit the mechanic and use it in another project 
+                  to make the most of it.
+                 </p>
             </div>
         
     </section>
