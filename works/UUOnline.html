@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Online Game</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../assets/img/GLogo.png" rel="icon">
+  <link href="../assets/img/GLogo.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=https://fonts.googleapis.com/css?family=Inconsolata:400,500,600,700|Raleway:400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+
+  <!-- =======================================================
+  * Template Name: MyPortfolio
+  * Template URL: https://bootstrapmade.com/myportfolio-bootstrap-portfolio-website-template/
+  * Updated: Mar 17 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+ <!-- ======= Navbar ======= -->
+  <div class="collapse navbar-collapse custom-navmenu" id="main-navbar">
+    <div class="container py-2 py-md-5">
+      <div class="row align-items-start">
+        <div class="col-md-2">
+          <ul class="custom-menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../about.html">About Me</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+             <li class="active"><a href="#">Works</a></li>
+          </ul>
+        </div>
+        <div class="col-md-6 d-none d-md-block  mr-auto">
+                    <div class="row align-items-start">
+                      <a href="https://www.linkedin.com/in/llorachba/" target="_blank"><span class="bi bi-linkedin"></span></a>
+                    </div>
+                    <div class="row align-items-start">
+                      <a href="https://x.com/Cervat_" target="_blank"><span class="bi bi-twitter"></span></a>
+                    </div>
+                    <div class="row align-items-start">
+                      <a href="#">llorachba@gmail.com</a>
+                    </div>
+          </div>
+
+
+        <div class="col-md-4 d-none d-md-block">
+          <h3>Passion for Videogames</h3>
+          <p>I love the fact that games connect with people, and I am always excited to work on new projects to achieve that goal, whether it be in programming or design.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="navbar navbar-light custom-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">MyPortfolio_</a>
+      <a href="#" class="burger" data-bs-toggle="collapse" data-bs-target="#main-navbar">
+        <span></span>
+      </a>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <section class="section">
+      <div class="container">
+        <div class="row mb-4 align-items-center">
+          <div class="col-md-6" data-aos="fade-up">
+            <h2>Unity/Unreal Online</h2>
+            <p>Connecting Unreal and Unity</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-section pb-0">
+        <div class="container">
+          <div class="row align-items-stretch">
+            <div class="col-md-8" data-aos="fade-up">
+              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Nl7aOTl9o1M?si=8lB262yLYROgWjam" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="col-md-3 ml-auto" data-aos="fade-up" data-aos-delay="100">
+              <div class="sticky-content">
+                <h3 class="h3">Teacher VR</h3>
+                <p class="mb-4"><span class="text-muted">01/2025 - 04/2025</span></p>
+                <p class="mb-4"><span class="text-muted">Unity, Unreal, C#</span></p>
+
+                <div class="mb-5">
+                  <p align="justify">A student project prototype of a capture-the-flag game, where Unreal and Unity clients connect through a server using sockets.
+                  </p>
+
+                </div>
+                <h4 class="h4 mb-3">Mechanics</h4>
+                <ul class="list-unstyled list-line mb-5">
+                  <li>Shoot other color team</li>
+                  <li>Capture enemy flags and score in your zone.</li>
+                 
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="site-section pb-0">
+                <div class="container">
+                    <h3> Game Info</h3>
+                    <p align = "justify">
+                        It is a capture-the-flag game where sockets were used to connect clients built in both Unreal and Unity engines, transmitting information to a C# server, which then updates all connected clients.
+                    </p>
+
+                    <h3> How server works</h3>
+                      <p align = "justify">
+                        When a client connects, the server stores it in a dictionary. The server continuously listens for incoming packets, and when a packet arrives, it goes through the client dictionary to update their
+                         information by sending the event they need to execute.
+                      </p>
+                      <details >
+                        <summary> <strong> Code </strong></summary>
+                        <pre><code class="language-csharp">
+                            switch (packetType)
+                            {
+                                case PacketType.WELCOME:
+                            
+                                    //This will show the senders/clients IP Address and Port Number
+                                    Console.WriteLine("Message received from " + stringSplit[1] + " ip:" + remote.ToString());
+                            
+                            
+                                    string hi = ((int)PacketType.WELCOME) + ";Yep, you just connected!";
+                            
+                                    data = Encoding.ASCII.GetBytes(hi);
+                            
+                                    // First parameter is the data, 2nd is packet size, 3rd is any flags we want,
+                                    // and 4th is destination client (which was saved when ReceiveFrom() is called)
+                                    newsock.SendTo(data, data.Length, SocketFlags.None, remote);
+                            
+                                    IPEndPoint ePoint = (IPEndPoint)remote;
+                                    isNewClient(ePoint);
+                            
+                                    break;
+                            
+                                case PacketType.UID:
+                            
+                                    // Asign unique ID to clients
+                                    break;
+                                case PacketType.UPDATE:
+                            
+                                    // Update all the transforms
+                            
+                                    break;
+                                case PacketType.HIT:
+                                    {
+                                       // Hit event Handle
+                                    }
+                                    
+                                case PacketType.FLAG:
+                                    {
+                                        int client_uniqueid = int.Parse(stringSplit[1]);
+                                        int flagEvent = int.Parse(stringSplit[2]); // PickUp, Drop, Return
+                                        int team = int.Parse(stringSplit[3]);
+                            
+                            
+                                        foreach (IPEndPoint clients_connected in connectedClients)
+                                        {
+                                            EndPoint clientd_end = clients_connected;
+                                            byte[] packetdata = new byte[4096];
+                                            string data_HIT_send = ((int)PacketType.FLAG) + ";" + client_uniqueid + ";" + flagEvent + ";" + team;
+                            
+                                            packetdata = Encoding.ASCII.GetBytes(data_HIT_send);
+                                            newsock.SendTo(packetdata, packetdata.Length, SocketFlags.None, clientd_end);
+                                        }
+                                        break;
+                                    }
+                                }
+                            </code></pre>
+                        </details>
+                        <br>
+                    <h3> How client works</h3>
+                    <p align = "justify">
+                        The packet sending on the client side works as follows: when a client performs an action, it sends a packet to the server indicating which event occurred. Once the server receives it, it updates 
+                        all clients, including the local one
+                    </p>
+        </div>
+        
+    </section>
+
+  </main><!-- End #main -->
+
+   <!-- ======= Footer ======= -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="credits">
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+        </div>
+       <div class="col-sm-6 social text-md-end">
+          <a href="https://www.linkedin.com/in/llorachba/" target="_blank"><span class="bi bi-linkedin"></span></a>
+          <a href="https://x.com/Cervat_" target="_blank"><span class="bi bi-twitter"></span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
