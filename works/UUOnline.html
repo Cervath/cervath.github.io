@@ -118,7 +118,7 @@
                 <ul class="list-unstyled list-line mb-5">
                   <li>Shoot other color team</li>
                   <li>Capture enemy flags and score in your zone.</li>
-                 
+                  <li>Lobby</li>
                 </ul>
               </div>
             </div>
@@ -134,11 +134,11 @@
 
                     <h3> How server works</h3>
                       <p align = "justify">
-                        When a client connects, the server stores it in a dictionary. The server continuously listens for incoming packets, and when a packet arrives, it goes through the client dictionary to update their
-                         information by sending the event they need to execute.
+                        When a client connects, the server stores it in a dictionary. The server then waits for new packets, filters them using a switch with enums, and sends the changes to all other clients.
                       </p>
+                      <!-- Init Code Section -->
                       <details >
-                        <summary> <strong> Code </strong></summary>
+                        <summary> <strong> Server main loop code </strong></summary>
                         <pre><code class="language-csharp">
                             switch (packetType)
                             {
@@ -168,6 +168,7 @@
                                 case PacketType.UPDATE:
                             
                                     // Update all the transforms
+                                    // After the switch all transforms are sent to the clients
                             
                                     break;
                                 case PacketType.HIT:
@@ -181,27 +182,142 @@
                                         int flagEvent = int.Parse(stringSplit[2]); // PickUp, Drop, Return
                                         int team = int.Parse(stringSplit[3]);
                             
-                            
-                                        foreach (IPEndPoint clients_connected in connectedClients)
-                                        {
-                                            EndPoint clientd_end = clients_connected;
-                                            byte[] packetdata = new byte[4096];
-                                            string data_HIT_send = ((int)PacketType.FLAG) + ";" + client_uniqueid + ";" + flagEvent + ";" + team;
-                            
-                                            packetdata = Encoding.ASCII.GetBytes(data_HIT_send);
-                                            newsock.SendTo(packetdata, packetdata.Length, SocketFlags.None, clientd_end);
-                                        }
+                                        byte[] packetdata = new byte[4096];
+                                        string data_HIT_send = ((int)PacketType.FLAG) + ";" + client_uniqueid + ";" + flagEvent + ";" + team;
+                                        packetdata = Encoding.ASCII.GetBytes(data_HIT_send);
+
+                                        SendDataToClients(packetdata);
+                                        
                                         break;
                                     }
                                 }
                             </code></pre>
-                        </details>
-                        <br>
+                      </details>
+                      <!-- End Code Section -->
+                      <br>
                     <h3> How client works</h3>
                     <p align = "justify">
-                        The packet sending on the client side works as follows: when a client performs an action, it sends a packet to the server indicating which event occurred. Once the server receives it, it updates 
-                        all clients, including the local one
+                      Packet sending on the client side works as follows: when a client performs an action, it sends a packet to the server indicating which event has occurred.
                     </p>
+                    <details >
+                      <summary> <strong> Unity Capture Flag Code </strong></summary>
+                      <pre><code class="language-csharp">
+                        // Only players can enter OnTrigger
+                        private void OnTriggerEnter(Collider other)
+                        {
+                            NetworkGameObject player = other.GetComponent<NetworkGameObject>();
+                      
+                            if (!player)
+                                return;
+                      
+                            if (!FlagInPosition() || !player.isLocallyOwned)
+                                return;
+                      
+                            if (player.GetTeam() != zone_flag_.GetTeam())
+                            {
+                                PickFlag(player);
+                            }
+                            else
+                            {
+                                if (player.own_flag_.activeSelf)
+                                    ReturnFlag(player);
+                            }
+                            
+                        }
+                        
+                        public void PickFlag(NetworkGameObject nt)
+                        {
+                            nt.PickFlag(zone_flag_.GetTeam());
+                            zone_flag_.gameObject.SetActive(false); 
+                      
+                            // Send a network message to notify all players about the flag pickup
+                            string flagMessage = (int)PacketType.FLAG + ";" + nt.uniqueNetworkID + ";" + (int)FlagEvent.PICKUP + ";" + (int)zone_flag_.GetTeam();
+                            byte[] hitPacket = Encoding.ASCII.GetBytes(flagMessage);
+                      
+                            NetworkManager.udpClient.Send(hitPacket, hitPacket.Length);
+                        }
+                          </code></pre>
+                    </details>
+                    <br>
+                    <p align = "justify">
+                      When the client's network manager receives the event, it will be filtered using a switch with enums, and it will call the components that have been affected.
+                    </p>
+                    <details >
+                      <summary> <strong> Unreal Capture Event Flag Code </strong></summary>
+                      <pre><code class="language-csharp">
+                      // Network Manager class
+
+                          switch (packetInt)
+                          {
+                            case EPacketType::WELCOME:
+                              UE_LOG(LogTemp, Warning, TEXT("Mesage: %s"), *newString);
+
+                              break;
+
+                            case EPacketType::UID:
+                            {
+                              // Assign unique IDs to network objects
+                              int32 local_ID = FCString::Atoi(*stringSplit[1]);
+                              int32 global_ID = FCString::Atoi(*stringSplit[2]);
+                              ETeam team = (ETeam)FCString::Atoi(*stringSplit[3]);
+
+                              AssignUIDS(local_ID, global_ID, team);
+
+                              break;
+                            }
+
+                            case EPacketType::UPDATE:
+                            {
+                              // Handle position and state updates for networked objects
+                            }
+                            case  EPacketType::HIT:
+                            {
+                              // Handle damage events
+
+                            }
+                            // Handle Flag events
+                            case  EPacketType::FLAG:
+                            {
+
+                              int32 globalID = FCString::Atoi(*stringSplit[1]);
+                              EFlagEvent flagEvent = (EFlagEvent)FCString::Atoi(*stringSplit[2]);
+                              ETeam team = (ETeam)FCString::Atoi(*stringSplit[3]);
+
+                              UNetworkObject* flag_player = GetNetworkObject(globalID);
+                              flag_manager_->FlagEvents(flag_player, flagEvent, team);
+
+                              break;
+                            }
+
+                        // Flag Manager class
+
+                            void AFlagManager::FlagEvents(UNetworkObject* flagPlayer, EFlagEvent eventFlag, ETeam team) {
+
+                              int32 t = (int32)team;
+                              switch (eventFlag)
+                              {
+                                case EFlagEvent::PICKUP:
+                            
+                                    flag_zone_[t]->Activate(false);
+                                    flagPlayer->PickUpFlag();
+                                    break;
+                                case EFlagEvent::DROP:
+                                    flag_zone_[t]->Activate(true);
+                                    flagPlayer->ReturnFlag();
+                            
+                            
+                                    break;
+                                case EFlagEvent::RETURN:
+                                    flag_zone_[t]->Activate(true);
+                                    flagPlayer->ReturnFlag();
+                            
+                                    points_->Score(flagPlayer->team_);
+                            
+                                    break;
+                              }
+                          }
+                          </code></pre>
+                    </details>
         </div>
         
     </section>
