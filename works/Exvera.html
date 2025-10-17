@@ -128,8 +128,79 @@
         <br>
         <div class="site-section pb-0">
                 <div class="container">
-                    <h3> Work In Progress</h3>
-                    
+                     <h3>Things learned</h3>
+                        <p align = "justify">
+                          Since this is a solo development project without strict deadlines, I’ve learned to establish a consistent work routine and organize myself using tools like Trello. By relying on familiar testers,
+                           I’ve been able to dive deeper into iterating on mechanics and UX/UI to ensure everything responds smoothly and provides a fair challenge that doesn’t frustrate players.
+                         </p>
+
+                        <p align = "justify">
+                          Focusing on keeping everything within the circle was a self-imposed restriction I wanted to maintain, which made omitting information in the game or menus a real challenge when it came to presenting everything clearly to users.
+                         </p>
+
+                         <hr class="thick-line">
+                       <!-- Movement-->
+                        <h3>Player Movement</h3>
+                     <div class="row align-items-stretch" data-aos="fade-up">
+                       <div class="col-md-7">
+                          <img src="https://images2.imgbox.com/dc/8d/C5Inhiz8_o.gif" width="100%" alt="Exvera Leaderboards gif"/>
+                       </div>
+                        <div class="col-md-5 d-flex align-items-center">
+                            <p align = "justify">
+                              The player accelerates while the button is held down, maintaining inertia, which makes changing direction more difficult and adds a skill-based element to controlling movement.
+                              <br><br>
+                              As you move, you generate charges. When you reach the maximum, you reload a bullet, forcing the player to keep moving constantly.
+                              <br><br>
+                              To generate the engine sound, we take the magnitude of the velocity and modify the pitch according to that value.
+                              <br><br>
+                            </p>
+                        </div>
+                        
+                    </div>
+
+                     <!-- End Movement-->
+                       <hr class="thick-line">
+                      <!-- Menus-->
+                        <h3>Menus</h3>
+                     <div class="row align-items-stretch" data-aos="fade-up">
+                       
+                        <div class="col-md-5 d-flex align-items-center">
+                            <p align = "justify">
+                              The menus are encapsulated within the circle, allowing interaction through hover and accept animations. Since all buttons share the same design, they all have access to the same animation.
+                              <br><br>
+                              The circle remains the same across all scenes, so its animations can be accessed at any time—whether in menus, during gameplay, or when destroying an enemy ship.
+                              <br><br>
+                              As additional audio options, when modified, each setting plays its respective sound. Mouse sensitivity and windowed mode options have also been added, although the game is fully responsive at any resolution.
+                              <br><br>
+                              
+                            </p>
+                        </div>
+                        <div class="col-md-7">
+                           <img src="https://images2.imgbox.com/19/fa/1i5mfQBj_o.gif" width="100%" alt="Exvera Leaderboards gif"/>
+                       </div>
+                    </div>
+
+                     <!-- End Menus-->
+                       <hr class="thick-line">
+                       
+                      <!-- Leaderboards-->
+                        <h3>Leaderboards</h3>
+                     <div class="row align-items-stretch" data-aos="fade-up">
+                       <div class="col-md-7">
+                       <img src="https://images2.imgbox.com/1c/81/yCMKEkMe_o.gif" width="100%" alt="Exvera Leaderboards gif"/>
+                        </div>
+                        <div class="col-md-5 d-flex align-items-center">
+                            <p align = "justify">
+                              To implement the leaderboard system, Silent Wolf was used, which is a backend service for Godot.
+                              <br><br>
+                              Once the results are obtained, they are cached to avoid querying the database continuously.
+                              <br><br>
+                              The results are displayed in a dropdown with a customizable animation, where the audio pitch changes with each iteration.
+                              <br><br>
+                              The results are divided between nearby rankings and the global leaderboard, highlighting your name in gold. If a new record is set, a notification is also displayed.
+                            </p>
+                        </div>
+                    </div>
         </div>
         
     </section>
